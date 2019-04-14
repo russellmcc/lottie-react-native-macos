@@ -7,24 +7,15 @@ import {
   Platform,
   StyleSheet,
   ViewPropTypes,
+  NativeModules,
+  requireNativeComponent,
 } from 'react-native';
-import SafeModule from 'react-native-safe-module';
 import PropTypes from 'prop-types';
 
-const NativeLottieView = SafeModule.component({
-  viewName: 'LottieAnimationView',
-  mockComponent: View,
-});
-const AnimatedNativeLottieView = Animated.createAnimatedComponent(NativeLottieView);
+const { LottieAnimationView: LottieViewManager } = NativeModules;
 
-const LottieViewManager = SafeModule.module({
-  moduleName: 'LottieAnimationView',
-  mock: {
-    play: () => {},
-    reset: () => {},
-    getConstants: () => {},
-  },
-});
+const NativeLottieView = requireNativeComponent("LottieAnimationView");
+const AnimatedNativeLottieView = Animated.createAnimatedComponent(NativeLottieView);
 
 const ViewStyleExceptBorderPropType = (props, propName, componentName, ...rest) => {
   const flattened = StyleSheet.flatten(props[propName] || {});
