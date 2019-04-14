@@ -115,6 +115,7 @@ class LottieView extends React.Component {
           args,
         ),
       ios: () => LottieViewManager[name](this.getHandle(), ...args),
+      macos: () => LottieViewManager[name](this.getHandle(), ...args),
     })();
   }
 
