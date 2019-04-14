@@ -8,13 +8,27 @@
 
 #import "LRNContainerView.h"
 
-// import UIView+React.h
+// import NS/UIView+React.h
+#if TARGET_OS_IPHONE || TARGET_OS_SIMULATOR
+
 #if __has_include(<React/UIView+React.h>)
 #import <React/UIView+React.h>
 #elif __has_include("UIView+React.h")
 #import "UIView+React.h"
 #else
 #import "React/UIView+React.h"
+#endif
+
+#else
+
+#if __has_include(<React/UIView+React.h>)
+#import <React/NSView+React.h>
+#elif __has_include("NSView+React.h")
+#import "NSView+React.h"
+#else
+#import "React/NSView+React.h"
+#endif
+
 #endif
 
 @implementation LRNContainerView {
@@ -52,11 +66,11 @@
 
 - (void)setResizeMode:(NSString *)resizeMode {
   if ([resizeMode isEqualToString:@"cover"]) {
-    [_animationView setContentMode:UIViewContentModeScaleAspectFill];
+    [_animationView setContentMode:LOTViewContentModeScaleAspectFill];
   } else if ([resizeMode isEqualToString:@"contain"]) {
-    [_animationView setContentMode:UIViewContentModeScaleAspectFit];
+    [_animationView setContentMode:LOTViewContentModeScaleAspectFill];
   } else if ([resizeMode isEqualToString:@"center"]) {
-    [_animationView setContentMode:UIViewContentModeCenter];
+    [_animationView setContentMode:LOTViewContentModeCenter];
   }
 }
 
@@ -107,7 +121,7 @@
 # pragma mark Private
 
 - (void)replaceAnimationView:(LOTAnimationView *)next {
-  UIViewContentMode contentMode = UIViewContentModeScaleAspectFit;
+  LOTViewContentMode contentMode = LOTViewContentModeScaleAspectFit;
   if (_animationView != nil) {
     contentMode = _animationView.contentMode;
     [_animationView removeFromSuperview];

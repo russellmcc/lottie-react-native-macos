@@ -34,7 +34,7 @@
 
 RCT_EXPORT_MODULE(LottieAnimationView)
 
-- (UIView *)view
+- (LOTView *)view
 {
   return [LRNContainerView new];
 }
@@ -63,7 +63,7 @@ RCT_EXPORT_METHOD(play:(nonnull NSNumber *)reactTag
                   fromFrame:(nonnull NSNumber *) startFrame
                   toFrame:(nonnull NSNumber *) endFrame)
 {
-  [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, UIView *> *viewRegistry) {
+  [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, LOTView *> *viewRegistry) {
     id view = viewRegistry[reactTag];
     if (![view isKindOfClass:[LRNContainerView class]]) {
       RCTLogError(@"Invalid view returned from registry, expecting LottieContainerView, got: %@", view);
@@ -85,7 +85,7 @@ RCT_EXPORT_METHOD(play:(nonnull NSNumber *)reactTag
 
 RCT_EXPORT_METHOD(reset:(nonnull NSNumber *)reactTag)
 {
-  [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, UIView *> *viewRegistry) {
+  [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, LOTView *> *viewRegistry) {
     id view = viewRegistry[reactTag];
     if (![view isKindOfClass:[LRNContainerView class]]) {
       RCTLogError(@"Invalid view returned from registry, expecting LottieContainerView, got: %@", view);
