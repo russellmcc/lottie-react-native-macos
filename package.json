@@ -1,5 +1,5 @@
 {
-  "name": "lottie-react-native",
+  "name": "lottie-react-native-macos",
   "version": "2.6.1",
   "description": "React Native bindings for Lottie",
   "main": "lib/index.js",
@@ -21,35 +21,36 @@
     "docs:prepare": "gitbook install",
     "docs:build": "npm run docs:prepare && gitbook build",
     "docs:watch": "npm run docs:prepare && gitbook serve",
-    "docs:publish": "npm run docs:clean && npm run docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git fetch git@github.com:airbnb/lottie-react-native.git gh-pages && git checkout -b gh-pages && git add . && git commit -am 'update book' && git push git@github.com:airbnb/lottie-react-native.git gh-pages --force",
+    "docs:publish": "npm run docs:clean && npm run docs:build && cd _book && git init && git commit --allow-empty -m 'update book' && git fetch git@github.com:russellmcc/lottie-react-native-macos.git gh-pages && git checkout -b gh-pages && git add . && git commit -am 'update book' && git push git@github.com:russellmcc/lottie-react-native-macos.git gh-pages --force",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/airbnb/lottie-react-native.git"
+    "url": "git+https://github.com/russellmcc/lottie-react-native-macos.git"
   },
   "keywords": [
     "lottie",
     "animation",
     "react",
-    "react-native",
+    "react-native-macos",
     "keyframe"
   ],
-  "author": "Leland Richardson <leland.richardson@airbnb.com>",
+  "Contributors": [
+    "Russell McClellan <russell.mcclellan@gmail.com>"
+  ],
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/airbnb/lottie-react-native/issues"
+    "url": "https://github.com/russellmcc/lottie-react-native-macos/issues"
   },
-  "homepage": "https://github.com/airbnb/lottie-react-native#readme",
+  "homepage": "https://github.com/russellmcc/lottie-react-native-macos#readme",
   "peerDependencies": {
     "react": "*",
     "react-native": ">=0.46"
   },
   "dependencies": {
     "invariant": "^2.2.2",
-    "lottie-ios": "2.5.0",
-    "prop-types": "^15.5.10",
-    "react-native-safe-module": "^1.1.0"
+    "lottie-ios": "^2.5",
+    "prop-types": "^15.5.10"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
